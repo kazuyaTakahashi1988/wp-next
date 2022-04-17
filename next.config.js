@@ -4,7 +4,7 @@ const nextConfig = {
     /* -------------------------------------------------------
       ▽ config情報 ▽
     ---------------------------------------------------------- */
-    SITE_HOST: 'http://hl.empty-service.com', // デプロイのホスト
+    SITE_HOST: 'http://wp-next.s3-website-ap-northeast-1.amazonaws.com', // デプロイのホスト
     SITE_NAME: 'デフォルトサイトネーム',
     DEFAULT_DES: 'デフォルトディスクリプション',
     DEFAULT_KEY: 'デフォルトキー',
