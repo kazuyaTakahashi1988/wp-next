@@ -1,12 +1,8 @@
 name: workflow
 
 on:
-  schedule:
-    - cron:  '15 * * * *'
-
-# on:
-#   repository_dispatch:
-#     type: after_saving_wordpress
+  repository_dispatch:
+    type: after_saving_wordpress
   # push:
   #   branches:
   #     - master
