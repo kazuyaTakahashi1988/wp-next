@@ -17,7 +17,11 @@ export const customPage = ({ postDetail, id }: Props) => {
         .replace(/(<([^>]+)>)/gi, "")
         .slice(0, 130)}
       pageUrl={`custom/detail/${id}`}
-      pageThum={postDetail._embedded["wp:featuredmedia"][0].source_url}
+      pageThum={
+        postDetail._embedded["wp:featuredmedia"]
+          ? postDetail._embedded["wp:featuredmedia"][0].source_url
+          : "/dummy.png"
+      }
       // pageKey=""
       pageType="custom"
     >
@@ -35,7 +39,7 @@ export const customPage = ({ postDetail, id }: Props) => {
             <img src="/frame.png" alt="フレーム" />
             <img
               src={
-                postDetail._embedded["wp:featuredmedia"][0].source_url
+                postDetail._embedded["wp:featuredmedia"]
                   ? postDetail._embedded["wp:featuredmedia"][0].source_url
                   : "/dummy.png"
               }
