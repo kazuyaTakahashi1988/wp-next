@@ -91,6 +91,7 @@ export const Layout = ({
           property="og:type"
           content={pageType == `home` ? `website` : `article`}
         />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       {/* -------------------------------------------------------
