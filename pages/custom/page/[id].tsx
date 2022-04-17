@@ -39,8 +39,10 @@ export const getStaticPaths = async () => {
   /* -------------------------------------------------------
     ▽ SSG用のパス指定  ▽
   ---------------------------------------------------------- */
+  const now = new Date();
+  const clear = `${now.getHours()}${now.getMinutes()}${now.getSeconds()}`;
   const res = await fetch(
-    `${process.env.WP_HOST}/wp-json/wp/v2/custom?_embed&per_page=6`
+    `${process.env.WP_HOST}/wp-json/wp/v2/custom?_embed&per_page=6&cache=${clear}`
   );
   const total = res.headers.get("x-wp-totalpages");
   const idNums = Array.from(new Array(Number(total))).map((v, i) => i + 1);
@@ -54,9 +56,11 @@ export const getStaticProps = async (context: { params: any }) => {
   /* -------------------------------------------------------
     ▽ 記事情報の取得  ▽
   ---------------------------------------------------------- */
+  const now = new Date();
+  const clear = `${now.getHours()}${now.getMinutes()}${now.getSeconds()}`;
   const { id } = context.params;
   const res = await fetch(
-    `${process.env.WP_HOST}/wp-json/wp/v2/custom?_embed&per_page=6&page=${id}`
+    `${process.env.WP_HOST}/wp-json/wp/v2/custom?_embed&per_page=6&page=${id}&cache=${clear}`
   );
   const total = res.headers.get("x-wp-totalpages");
   const json = await res.json();

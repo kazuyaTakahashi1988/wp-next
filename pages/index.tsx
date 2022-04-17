@@ -43,8 +43,10 @@ export const getStaticProps = async () => {
   /* -------------------------------------------------------
     ▽ 記事情報の取得  ▽
   ---------------------------------------------------------- */
+  const now = new Date();
+  const clear = `${now.getHours()}${now.getMinutes()}${now.getSeconds()}`;
   const res = await fetch(
-    `${process.env.WP_HOST}/wp-json/wp/v2/posts?_embed&per_page=6`
+    `${process.env.WP_HOST}/wp-json/wp/v2/posts?_embed&per_page=6&cache=${clear}`
   );
   const json = await res.json();
   return {
