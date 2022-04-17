@@ -37,7 +37,7 @@ export const Articles = ({ posts, slug, total, currentNum }: Props) => {
                   <img src="/frame.png" alt="フレーム" />
                   <img
                     src={
-                      post._embedded["wp:featuredmedia"][0].source_url
+                      post._embedded["wp:featuredmedia"][0]
                         ? post._embedded["wp:featuredmedia"][0].source_url
                         : "/dummy.png"
                     }
