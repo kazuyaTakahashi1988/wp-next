@@ -23,11 +23,10 @@ export const customPage = ({ posts, total, id }: Props) => {
       pageType="custom"
     >
 
-      <h2 className="sttl">new customPost - {id}</h2>
-      
       { /* -------------------------------------------------------
         ▽ 記事一覧  ▽
       ---------------------------------------------------------- */ }
+      <h2 className="sttl">new customPost - {id}</h2>
       <Articles posts={posts} slug={`custom`} total={total} currentNum={id} />
 
     </Layout>

@@ -21,11 +21,10 @@ export const Post = ({ posts, total }: Props) => {
       pageType="post"
     >
       
-      <h2 className="sttl">new Post - 1</h2>
-
       { /* -------------------------------------------------------
         ▽ 記事一覧  ▽
       ---------------------------------------------------------- */ }
+      <h2 className="sttl">new Post - 1</h2>
       <Articles posts={posts} slug={`post`} total={total} currentNum={1} />
 
     </Layout>
