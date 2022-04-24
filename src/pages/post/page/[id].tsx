@@ -1,12 +1,7 @@
 import fetch from "node-fetch";
+import { Props } from "../../../types/props";
 import Layout from "../../../components/layout";
 import Articles from "../../../components/articles";
-
-type Props = {
-  posts: any;
-  total: number;
-  id: number;
-};
 
 export const Page = ({ posts, total, id }: Props) => {
 

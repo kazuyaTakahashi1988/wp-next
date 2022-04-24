@@ -1,10 +1,6 @@
 import fetch from "node-fetch";
+import { Props } from "../../../types/props";
 import Layout from "../../../components/layout";
-
-type Props = {
-  postDetail: any;
-  id: number;
-};
 
 export const customPage = ({ postDetail, id }: Props) => {
   return (

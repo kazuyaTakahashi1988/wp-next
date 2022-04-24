@@ -1,11 +1,8 @@
 import fetch from "node-fetch";
+import { Props } from "../types/props";
 import Layout from "../components/layout";
 import SwiperComp from "../components/swiper";
 import Articles from "../components/articles";
-
-type Props = {
-  posts: any;
-};
 
 export const Home = ({ posts }: Props) => {
 

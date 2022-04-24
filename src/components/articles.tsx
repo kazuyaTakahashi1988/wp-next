@@ -1,19 +1,27 @@
 import Link from "next/link";
-import React, { useState } from "react";
-
-type Props = {
-  posts?: any;
-  slug?: string;
-  total?: number;
-  currentNum?: number;
-};
+import { Props } from "../types/props";
 
 export const Articles = ({ posts, slug, total, currentNum }: Props) => {
+
+  { /* -------------------------------------------------------
+    ▽ ページャー用DOM  ▽
+  ---------------------------------------------------------- */ }
+  const pagerItem: JSX.Element[] = [];
+  for (let i = 1; i < Number(total)+1; i++) {
+    pagerItem.push(
+      <li key={`${i}`} className={ i == currentNum ? "current" : ""}>
+        <Link href={`/${slug}/page/${i}`}>
+          <a>{i}</a>
+        </Link>
+      </li>
+    );
+  }
+
   return (
     <>
-      {/* -------------------------------------------------------
+      { /* -------------------------------------------------------
         ▽ 記事リスト  ▽
-      ---------------------------------------------------------- */}
+      ---------------------------------------------------------- */ }
       <ul className="postList">
         {posts.map((post: any, index: number) => (
           <li key={`${index}`}>
@@ -42,21 +50,12 @@ export const Articles = ({ posts, slug, total, currentNum }: Props) => {
           </li>
         ))}
       </ul>
-
-      {/* -------------------------------------------------------
+      
+      { /* -------------------------------------------------------
         ▽ ページャー  ▽
-      ---------------------------------------------------------- */}
-      <ul className="peger">
-        {Array.from(new Array(Number(total)))
-          .map((v, i) => i + 1)
-          .map((Num: number, index: number) => (
-            <li key={`${index}`} className={Num == currentNum ? "current" : ""}>
-              <Link href={`/${slug}/page/${Num}`}>
-                <a>{Num}</a>
-              </Link>
-            </li>
-          ))}
-      </ul>
+      ---------------------------------------------------------- */ }
+      { pagerItem.length > 0 && <ul className="peger">{pagerItem}</ul> }
+      
     </>
   );
 };

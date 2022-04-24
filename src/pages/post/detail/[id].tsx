@@ -1,11 +1,7 @@
 import Link from "next/link";
 import fetch from "node-fetch";
+import { Props } from "../../../types/props";
 import Layout from "../../../components/layout";
-
-type Props = {
-  postDetail: any;
-  id: number;
-};
 
 export const Page = ({ postDetail, id }: Props) => {
   return (
