@@ -1,27 +1,32 @@
 import Link from "next/link";
 import { Props } from "../types/props";
+import React, { useEffect, useState } from "react";
 
 export const Articles = ({ posts, slug, total, currentNum }: Props) => {
-
-  { /* -------------------------------------------------------
+  
+  /* -------------------------------------------------------
     ▽ ページャー用DOM  ▽
-  ---------------------------------------------------------- */ }
-  const pagerItem: JSX.Element[] = [];
-  for (let i = 1; i < Number(total)+1; i++) {
-    pagerItem.push(
-      <li key={`${i}`} className={ i == currentNum ? "current" : ""}>
-        <Link href={`/${slug}/page/${i}`}>
-          <a>{i}</a>
-        </Link>
-      </li>
-    );
-  }
+  ---------------------------------------------------------- */
+  const [pagerItem, setPagerItem] = useState<JSX.Element[]>([]);
+  useEffect(() => {
+    const pushItem: JSX.Element[] = [];
+    for (let i = 1; i < Number(total) + 1; i++) {
+      pushItem.push(
+        <li key={`${i}`} className={i == currentNum ? "current" : ""}>
+          <Link href={`/${slug}/page/${i}`}>
+            <a>{i}</a>
+          </Link>
+        </li>
+      );
+    }
+    setPagerItem(pushItem);
+  }, [total, currentNum]);
 
   return (
     <>
-      { /* -------------------------------------------------------
+      {/* -------------------------------------------------------
         ▽ 記事リスト  ▽
-      ---------------------------------------------------------- */ }
+      ---------------------------------------------------------- */}
       <ul className="postList">
         {posts.map((post: any, index: number) => (
           <li key={`${index}`}>
@@ -50,12 +55,11 @@ export const Articles = ({ posts, slug, total, currentNum }: Props) => {
           </li>
         ))}
       </ul>
-      
-      { /* -------------------------------------------------------
+
+      {/* -------------------------------------------------------
         ▽ ページャー  ▽
-      ---------------------------------------------------------- */ }
-      { pagerItem.length > 0 && <ul className="peger">{pagerItem}</ul> }
-      
+      ---------------------------------------------------------- */}
+      {pagerItem.length >= 1 && <ul className="peger">{pagerItem}</ul>}
     </>
   );
 };

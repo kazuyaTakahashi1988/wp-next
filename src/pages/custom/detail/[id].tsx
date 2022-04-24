@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import { Props } from "../../../types/props";
 import Layout from "../../../components/layout";
 
-export const customPage = ({ postDetail, id }: Props) => {
+export const customDetail = ({ postDetail, id }: Props) => {
   return (
     <Layout
       /* -------------------------------------------------------
@@ -130,4 +130,4 @@ export const getStaticProps = async (context: { params: any }) => {
   
 };
 
-export default customPage;
+export default customDetail;
