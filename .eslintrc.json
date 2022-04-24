@@ -1,4 +1,0 @@
-// .eslintrc.json
-{
-    "ignorePatterns": ["*.config.js"],
-}
