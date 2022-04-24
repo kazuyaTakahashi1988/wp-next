@@ -10,7 +10,7 @@ export const Articles = ({ posts, slug, total, currentNum }: Props) => {
   const [pagerItem, setPagerItem] = useState<JSX.Element[]>([]);
   useEffect(() => {
     const pushItem: JSX.Element[] = [];
-    for (let i = 1; i < total + 1; i++) {
+    for (let i = 1; i < Number(total) + 1; i++) {
       pushItem.push(
         <li key={`${i}`} className={i == currentNum ? "current" : ""}>
           <Link href={`/${slug}/page/${i}`}>
