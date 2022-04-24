@@ -19,17 +19,15 @@ export const Page = ({ postDetail, id }: Props) => {
         .slice(0, 130)}
       pageUrl={`post/detail/${id}`}
       pageThum={
-        postDetail._embedded["wp:featuredmedia"]
-          ? postDetail._embedded["wp:featuredmedia"][0].source_url
-          : "/dummy.png"
+        postDetail._embedded["wp:featuredmedia"] &&
+        postDetail._embedded["wp:featuredmedia"][0].source_url
       }
       // pageKey=""
       pageType="post"
     >
-      
-      { /* -------------------------------------------------------
+      {/* -------------------------------------------------------
         ▽ 記事詳細 ▽
-      ---------------------------------------------------------- */ }
+      ---------------------------------------------------------- */}
       <h2 className="sttl">{postDetail.title.rendered}</h2>
       <div className="post_contents-area">
         <div className="data">{postDetail.date.slice(0, 10)}</div>
@@ -90,13 +88,14 @@ export const Page = ({ postDetail, id }: Props) => {
             <div className="sub-conts">
               <div
                 className="editor-style"
-                dangerouslySetInnerHTML={{ __html: postDetail.acf.sub_contents }}
+                dangerouslySetInnerHTML={{
+                  __html: postDetail.acf.sub_contents,
+                }}
               ></div>
             </div>
           </div>
         </div>
       </div>
-      
     </Layout>
   );
 };
@@ -128,7 +127,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context: { params: any }) => {
-  
+
   /* -------------------------------------------------------
     ▽ 記事情報の取得  ▽
   ---------------------------------------------------------- */
@@ -145,7 +144,7 @@ export const getStaticProps = async (context: { params: any }) => {
       id: id,
     },
   };
-  
+
 };
 
 export default Page;
