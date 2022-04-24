@@ -1,6 +1,6 @@
 import Link from "next/link";
 import fetch from "node-fetch";
-import { Props } from "../../../types/props";
+import { Props } from "../../../lib/props";
 import Layout from "../../../components/layout";
 
 export const Detail = ({ postDetail, id }: Props) => {

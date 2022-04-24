@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { Props } from "../types/props";
+import { Props } from "../lib/props";
 import Layout from "../components/layout";
 import SwiperComp from "../components/swiper";
 import Articles from "../components/articles";

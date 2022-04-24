@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Props } from "../types/props";
+import { Props } from "../lib/props";
 import React, { useEffect, useState } from "react";
 
 export const Articles = ({ posts, slug, total, currentNum }: Props) => {
