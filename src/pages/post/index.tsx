@@ -4,6 +4,7 @@ import Layout from "../../components/layout";
 import Articles from "../../components/articles";
 
 export const Post = ({ posts, total }: Props) => {
+  
   return (
     <Layout
       /* -------------------------------------------------------
@@ -16,19 +17,26 @@ export const Post = ({ posts, total }: Props) => {
       // pageThum=""
       pageType="post"
     >
-      
-      { /* -------------------------------------------------------
+
+      {/* -------------------------------------------------------
         ▽ 記事一覧  ▽
-      ---------------------------------------------------------- */ }
+      ---------------------------------------------------------- */}
       <h2 className="sttl">new Post - 1</h2>
-      <Articles posts={posts} slug={`post`} total={total} currentNum={1} />
+      <Articles
+        posts={posts}
+        slug={`post`}
+        total={total}
+        currentNum={1}
+        postDetail={undefined}
+        id={""}
+      />
 
     </Layout>
   );
 };
 
 export const getStaticProps = async () => {
-  
+
   /* -------------------------------------------------------
     ▽ 記事情報の取得  ▽
   ---------------------------------------------------------- */
@@ -45,7 +53,7 @@ export const getStaticProps = async () => {
       total: total,
     },
   };
-
+  
 };
 
 export default Post;

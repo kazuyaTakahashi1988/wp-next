@@ -4,7 +4,7 @@ import Layout from "../../../components/layout";
 import Articles from "../../../components/articles";
 
 export const Page = ({ posts, total, id }: Props) => {
-
+  
   return (
     <Layout
       /* -------------------------------------------------------
@@ -17,19 +17,26 @@ export const Page = ({ posts, total, id }: Props) => {
       // pageThum=""
       pageType="post"
     >
-      
-      { /* -------------------------------------------------------
+
+      {/* -------------------------------------------------------
         ▽ 記事一覧  ▽
-      ---------------------------------------------------------- */ }
+      ---------------------------------------------------------- */}
       <h2 className="sttl">new Post - {id}</h2>
-      <Articles posts={posts} slug={`post`} total={total} currentNum={id} />
+      <Articles
+        posts={posts}
+        slug={`post`}
+        total={total}
+        currentNum={Number(id)}
+        postDetail={undefined}
+        id={""}
+      />
 
     </Layout>
   );
 };
 
 export const getStaticPaths = async () => {
-  
+
   /* -------------------------------------------------------
     ▽ SSG用のパス指定  ▽
   ---------------------------------------------------------- */
@@ -65,7 +72,7 @@ export const getStaticProps = async (context: { params: any }) => {
       id: id,
     },
   };
-
+  
 };
 
 export default Page;

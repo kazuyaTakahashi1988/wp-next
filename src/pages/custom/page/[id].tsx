@@ -18,18 +18,25 @@ export const customPage = ({ posts, total, id }: Props) => {
       pageType="custom"
     >
 
-      { /* -------------------------------------------------------
+      {/* -------------------------------------------------------
         ▽ 記事一覧  ▽
-      ---------------------------------------------------------- */ }
+      ---------------------------------------------------------- */}
       <h2 className="sttl">new customPost - {id}</h2>
-      <Articles posts={posts} slug={`custom`} total={total} currentNum={id} />
+      <Articles
+        posts={posts}
+        slug={`custom`}
+        total={total}
+        currentNum={Number(id)}
+        postDetail={undefined}
+        id={""}
+      />
 
     </Layout>
   );
 };
 
 export const getStaticPaths = async () => {
-  
+
   /* -------------------------------------------------------
     ▽ SSG用のパス指定  ▽
   ---------------------------------------------------------- */
@@ -46,7 +53,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context: { params: any }) => {
-  
+
   /* -------------------------------------------------------
     ▽ 記事情報の取得  ▽
   ---------------------------------------------------------- */
@@ -65,7 +72,7 @@ export const getStaticProps = async (context: { params: any }) => {
       id: id,
     },
   };
-  
+
 };
 
 export default customPage;

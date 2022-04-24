@@ -4,7 +4,7 @@ import Layout from "../../components/layout";
 import Articles from "../../components/articles";
 
 export const customPost = ({ posts, total }: Props) => {
-
+  
   return (
     <Layout
       /* -------------------------------------------------------
@@ -18,18 +18,25 @@ export const customPost = ({ posts, total }: Props) => {
       pageType="custom"
     >
 
-      { /* -------------------------------------------------------
+      {/* -------------------------------------------------------
         ▽ 記事一覧  ▽
-      ---------------------------------------------------------- */ }
+      ---------------------------------------------------------- */}
       <h2 className="sttl">new customPost - 1</h2>
-      <Articles posts={posts} slug={`custom`} total={total} currentNum={1} />
+      <Articles
+        posts={posts}
+        slug={`custom`}
+        total={total}
+        currentNum={1}
+        postDetail={undefined}
+        id={""}
+      />
 
     </Layout>
   );
 };
 
 export const getStaticProps = async () => {
-  
+
   /* -------------------------------------------------------
     ▽ 記事情報の取得  ▽
   ---------------------------------------------------------- */
