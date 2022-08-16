@@ -28,9 +28,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: install typescript
-        run: npm install --dev typescript @types/react @types/node
-
       - name: Next Generate
         run: npm run build
 
