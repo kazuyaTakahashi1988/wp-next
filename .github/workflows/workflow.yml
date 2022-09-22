@@ -1,43 +1,43 @@
-# name: workflow
+name: workflow
 
-# on:
-#   repository_dispatch:
-#     type: after_saving_wordpress
-#   # push:
-#   #   branches:
-#   #     - master
+on:
+  repository_dispatch:
+    type: after_saving_wordpress
+  # push:
+  #   branches:
+  #     - master
 
 
 
-# jobs:
-#   deploy: # ジョブ名(名前は任意)
-#     runs-on: ubuntu-latest
-#     timeout-minutes: 10 # デフォルトは360（6時間）のため短い時間で設定しておく
-#     env:
-#       NODE_ENV: production
+jobs:
+  deploy: # ジョブ名(名前は任意)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10 # デフォルトは360（6時間）のため短い時間で設定しておく
+    env:
+      NODE_ENV: production
 
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-#       - name: Setup Node
-#         uses: actions/setup-node@v1
-#         with:
-#           node-version: 16.x
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
 
-#       - name: Install dependencies
-#         run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-#       - name: Next Generate
-#         run: npm run build
+      - name: Next Generate
+        run: npm run build
 
-#       - name: Configure AWS credentials
-#         uses: aws-actions/configure-aws-credentials@v1
-#         with:
-#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#           aws-region: ap-northeast-1
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
 
-#       - name: S3 sync
-#         run: aws s3 sync ./out s3://${{ secrets.AWS_BUCKET_NAME }} --delete --exclude "wp-content/*"
+      - name: S3 sync
+        run: aws s3 sync ./out s3://${{ secrets.AWS_BUCKET_NAME }} --delete --exclude "wp-content/*"
 
