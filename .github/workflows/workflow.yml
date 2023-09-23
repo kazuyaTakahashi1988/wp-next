@@ -31,13 +31,22 @@ jobs:
       - name: Next Generate
         run: npm run build
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0 # FTPを使ってサーバーにDeployするアクションを実行
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-northeast-1
+          server: ${{ secrets.FTP_SERVER }} # FTPサーバーのURLを設定
+          username: ${{ secrets.FTP_USERNAME }} # FTPのユーザー名を設定
+          password: ${{ secrets.FTP_PASSWORD }} # FTPのパスワードを設定
+          local-dir: ./out/ # どのディレクトリのデータをアップロードするか
+          server-dir: /wp-next/ # リモートのどのディレクトリにアップロードするか
 
-      - name: S3 sync
-        run: aws s3 sync ./out s3://${{ secrets.AWS_BUCKET_NAME }} --delete --exclude "wp-content/*"
+      # - name: Configure AWS credentials # S3のケース
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: ap-northeast-1
+
+      # - name: S3 sync
+      #   run: aws s3 sync ./out s3://${{ secrets.AWS_BUCKET_NAME }} --delete --exclude "wp-content/*"
 
